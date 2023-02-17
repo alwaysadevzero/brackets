@@ -19,10 +19,9 @@ module.exports = function check(str, bracketsConfig) {
         //False if closedBracketIndex less than openBracketIndex. Example : )(
         if (closedBracketIndex - openBracketIndex < 0) return false;
 
-        //cut piece array between openBracketIndex and closedBracketIndex
-        arrBetweenBrackets = strArr.slice(openBracketIndex+1,closedBracketIndex).length;
+        lengthBetweenBrackets = Math.abs(openBracketIndex - closedBracketIndex) - 1;
 
-        if (arrBetweenBrackets % 2 !== 0) return false;
+        if (lengthBetweenBrackets % 2 !== 0) return false;
 
         strArr = strArr.filter((_, index) => index !== closedBracketIndex && index !== openBracketIndex)
       } while (closedBracketIndex + openBracketIndex > 0);
